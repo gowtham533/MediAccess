@@ -1,0 +1,412 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+
+/* page wrapper */
+.authPage {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f6fa;
+  font-family: "Poppins", sans-serif;
+}
+
+/* main container */
+.authWrapper {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  width: 850px;
+  max-width: 100%;
+  min-height: 550px;
+}
+
+/* form containers */
+.authFormBox {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.loginFormBox {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.panelActive .loginFormBox {
+  transform: translateX(100%);
+}
+
+.registerFormBox {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.panelActive .registerFormBox {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: show 0.6s;
+}
+
+/* animation */
+@keyframes show {
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+/* sliding panel */
+.slidePanelWrapper {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
+}
+
+.panelActive .slidePanelWrapper {
+  transform: translateX(-100%);
+}
+
+.slidePanel {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.panelActive .slidePanel {
+  transform: translateX(50%);
+}
+
+/* panel content */
+.panelContent {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
+}
+
+.panelContentLeft {
+  transform: translateX(-20%);
+}
+
+.panelActive .panelContentLeft {
+  transform: translateX(0);
+}
+
+.panelContentRight {
+  right: 0;
+  transform: translateX(0);
+}
+
+.panelActive .panelContentRight {
+  transform: translateX(20%);
+}
+
+/* form */
+.form {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+}
+
+.title {
+  font-weight: 700;
+  margin: 0;
+  font-size: 28px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #666;
+}
+
+.text {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  margin: 20px 0 30px;
+}
+
+/* inputs */
+.input {
+  background-color: #f3f4f6;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin: 8px 0;
+  width: 100%;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #667eea;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* buttons */
+.button {
+  border-radius: 25px;
+  border: none;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 14px 50px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.transparentBtn {
+  background: transparent;
+  border: 2px solid #ffffff;
+  box-shadow: none;
+}
+
+/* links */
+.link {
+  color: #667eea;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
+}
+
+.link:hover {
+  color: #764ba2;
+}
+
+/* social */
+.socialLinks {
+  margin: 25px 0;
+}
+
+.socialLinks a {
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 8px;
+  height: 45px;
+  width: 45px;
+  transition: all 0.3s ease;
+  color: #667eea;
+}
+
+.socialLinks a:hover {
+  border-color: #667eea;
+  background: #667eea;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* mobile switch */
+.mobileSwitch {
+  display: none;
+}
+
+/* ===============================
+   Animated Background
+================================ */
+.authBackground {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    -45deg,
+    #667eea,
+    #764ba2,
+    #6b8cff,
+    #8e54e9
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ===============================
+   Password Eye Toggle
+================================ */
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.eyeButton {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #667eea;
+  font-size: 16px;
+  padding: 0;
+}
+
+.eyeButton:hover {
+  color: #764ba2;
+}
+
+/* ===============================
+   Dark Mode Animated Background
+   (No SVG, No JS)
+================================ */
+.darkBg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(88, 80, 236, 0.35),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(124, 58, 237, 0.35),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 50% 80%,
+      rgba(67, 56, 202, 0.35),
+      transparent 50%
+    ),
+    linear-gradient(180deg, #0f0f1a, #09090f);
+
+  animation: darkFloat 18s ease-in-out infinite alternate;
+}
+
+/* subtle movement */
+@keyframes darkFloat {
+  0% {
+    background-position:
+      0% 0%,
+      100% 0%,
+      50% 100%,
+      center;
+  }
+  100% {
+    background-position:
+      20% 10%,
+      80% 20%,
+      60% 90%,
+      center;
+  }
+}
+
+
+/* responsive */
+@media (max-width: 768px) {
+  .authWrapper {
+    min-height: auto;
+    width: 100%;
+    border-radius: 15px;
+  }
+
+  .authFormBox {
+    position: static;
+    width: 100%;
+    transform: none;
+    opacity: 1;
+  }
+
+  .loginFormBox,
+  .registerFormBox {
+    position: static;
+    width: 100%;
+    left: 0;
+    transform: none;
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .registerFormBox {
+    display: none;
+  }
+
+  .panelActive .loginFormBox {
+    display: none;
+  }
+
+  .panelActive .registerFormBox {
+    display: block;
+  }
+
+  .slidePanelWrapper {
+    display: none;
+  }
+
+  .form {
+    padding: 30px 25px;
+    height: auto;
+  }
+
+  .mobileSwitch {
+    display: block;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+}
