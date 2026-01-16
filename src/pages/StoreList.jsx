@@ -227,17 +227,6 @@ function StoreList() {
                 onChange={(e) => setLocation(e.target.value)}
                 className="flex-1 bg-transparent outline-none text-white text-lg placeholder:text-gray-400 font-medium min-w-0"
               />
-
-
-              <button 
-                type="button"
-                className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl font-bold text-white overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-105 shrink-0">
-                <span className="relative z-10 flex items-center gap-2">
-                  <Navigation className="w-5 h-5" />
-                  Search
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </button>
             </div>
 
             {/* Animated bottom border */}

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { MapPin, Shield, Clock, Heart, Navigation, Activity, Sparkles, Zap, TrendingUp, CheckCircle, Search } from 'lucide-react';
 import Header from '../users/Header';
 import Footer from '../users/Footer';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+
 
 
 
@@ -50,6 +52,7 @@ function AnimatedCounter({ end, duration = 2000, suffix = '' }) {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const navigate = useNavigate(); 
+ 
 
 
   useEffect(() => {
@@ -111,7 +114,7 @@ const handleSearch = () => {
   const [location, setLocation] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   
-  const quickLocations = ['ERNAKULAM', 'M.G. ROAD', 'KALOOR', 'ALUVA', 'KAKKANAD'];
+  const quickLocations = ['ERNAKULAM', 'KOZHIKODE', 'KOLLAM', 'KOTTAYAM', 'ALAPPUZHA'];
   
   const features = [
     {
@@ -150,6 +153,23 @@ const handleSearch = () => {
     { icon: Heart, value: 1500, suffix: '+', label: 'Emergency Supported Pharmacies', color: 'pink' },
     { icon: MapPin, value: 60000, suffix: '+', label: 'Searches Assisted', color: 'indigo' }
   ];
+
+   const [authorized,setAuthorized] = useState(false)
+   const navigate = useNavigate()
+
+  useEffect(()=>{
+    const token = sessionStorage.getItem("token")
+    setAuthorized(!!token)
+  },[])
+
+  const handleClick = ()=>{
+    const token = sessionStorage.getItem("token")
+   if(!token){
+    toast.warning("Please Login to search")
+    return;
+   }
+   navigate('/storelist')
+  }
 
   return (
 
@@ -207,11 +227,8 @@ const handleSearch = () => {
               
               {/* New Main CTA Button */}
             <div className="mb-8">
-              <Link to={'/storelist'}>
-                <button
-                  onClick={() => navigate('/storelist')}
-                  className="group relative inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white rounded-2xl font-bold text-xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 overflow-hidden"
-                >
+                <button type='button' onClick={handleClick} 
+                  className="group relative inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white rounded-2xl font-bold text-xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 overflow-hidden">
                   {/* Animated background layers */}
                   <div className="absolute inset-0 bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="absolute inset-0 bg-white/20 scale-0 group-hover:scale-150 transition-transform duration-700 rounded-2xl blur-2xl"></div>
@@ -236,7 +253,6 @@ const handleSearch = () => {
                   <Sparkles className="absolute top-2 right-2 size-5 text-white/60 opacity-0 group-hover:opacity-100 group-hover:rotate-180 transition-all duration-500" />
                   <Sparkles className="absolute bottom-2 left-2 size-4 text-white/60 opacity-0 group-hover:opacity-100 group-hover:-rotate-180 transition-all duration-500" />
                 </button>
-              </Link>
             </div>
               
               {/* Quick Location Tags */}
@@ -472,6 +488,7 @@ const handleSearch = () => {
         </section>
       </div>
       <Footer/>
+      <ToastContainer position="center" autoClose={3000} theme="colored" />
     </>
   );
 }

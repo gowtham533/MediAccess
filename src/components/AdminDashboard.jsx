@@ -288,7 +288,6 @@ function AdminDashboard() {
     { id: "overview", icon: LayoutDashboard, label: "Overview" },
     { id: "approvals", icon: FileText, label: "Approvals" },
     { id: "approved-stores", icon: Store, label: "Approved Stores" },
-    { id: "analytics", icon: BarChart3, label: "Analytics" },
   ];
 
   const filteredStores = pendingStores.filter(store => {
@@ -571,14 +570,6 @@ function AdminDashboard() {
                   </tbody>
                 </table>
               </div>
-            </div>
-          )}
-
-          {/* Analytics */}
-          {activeTab === "analytics" && (
-            <div className="bg-white rounded-3xl shadow-lg p-6">
-              <h2 className="text-2xl font-bold mb-4">Analytics Dashboard</h2>
-              <p className="text-gray-600">Analytics features coming soon...</p>
             </div>
           )}
         </main>
